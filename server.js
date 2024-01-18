@@ -5,10 +5,6 @@ const port = 3000
 
 app.use(express.json())
 
-app.get('/', (request, response) => {
-  response.send('hello world')
-})
-
 app.use('/api/v1/clients', clients)
 
 app.listen(port, () => {

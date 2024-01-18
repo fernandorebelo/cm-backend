@@ -1,5 +1,5 @@
 const pool = require('../../db')
-const queries = require('./queries')
+const queries = require('../dataAccess/clientRepository')
 
 const getClients = (request, response) => {
   pool.query(queries.getClients, (error, results) => {
