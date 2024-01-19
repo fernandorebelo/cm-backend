@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+
+  db-cm-backend:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: cmuser
+      POSTGRES_PASSWORD: cmpassword
+    container_name: "db-postgres-cm"
+    volumes:
+      - database-cm-backend:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  database-cm-backend:
