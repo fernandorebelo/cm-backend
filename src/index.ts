@@ -1,11 +1,14 @@
 import express from 'express'
-import { Request, Response, Router } from 'express'
+import cors from 'cors'
+import { routes } from './routes'
 
 const app = express()
 const port = 3000
 
-app.get('/', (request: Request, response: Response) => {
-  response.json({ message: 'ambiente criado' })
-})
+app.use(cors())
+app.use(express.json())
+
+routes(app)
 
 app.listen(port)
+console.log('servidor iniciou')

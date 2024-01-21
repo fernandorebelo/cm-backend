@@ -71,3 +71,7 @@ Json body
 | `last_name`  | `string` | **Required**. |
 | `city`       | `string` | **Required**. |
 | `email`      | `string` | **Required**. |
+
+### Para rodar
+
+npx ts-node-dev src/index.ts
