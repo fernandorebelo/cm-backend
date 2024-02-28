@@ -1,18 +1,32 @@
-version: '3.1'
+version: '3.5'
 
 services:
 
-  db-cm-backend:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_USER: cmuser
-      POSTGRES_PASSWORD: cmpassword
-    container_name: "db-postgres-cm"
+  cm-api:
+    container_name: cm
+    build: .
+    depends_on:
+      - postgres
+    links:
+      - postgres
+    ports:
+      - "3000:3000"
     volumes:
-      - database-cm-backend:/var/lib/postgresql/data
+      - .:/usr/src/index
+    environment:
+    - NODE_ENV=production
+    - DATABASE_URL=${DATABASE_URL}
+    command: sh -c "npm run prisma && node build/index.js"
+
+  postgres:
+    container_name: postgres-cm
+    image: postgres
+    environment:
+      # - POSTGRES_USER=cmuser
+      - POSTGRES_PASSWORD=cmpassword
+    volumes:
+      - ./data:/data/postgres
     ports:
       - "5435:5432"
-
-volumes:
-  database-cm-backend:
+    expose:
+      - 5432

@@ -75,3 +75,5 @@ Json body
 ### Para rodar
 
 npx ts-node-dev src/index.ts
+
+docker compose -f docker-compose.yaml up --attach cm-api
