@@ -76,4 +76,16 @@ Json body
 
 npx ts-node-dev src/index.ts
 
+## Para migrar as tabelas para o prisma
+
+Entrar no .env e descomentar o DATABASE_URL com o localhost para migrar a tabela do prisma.
+
+```
+npx prisma migrate dev
+```
+
+Para rodar o docker (não esquecer de comentar o DATABASE_URL com o localhost):
+
+```
 docker compose -f docker-compose.yaml up --attach cm-api
+```
